@@ -2,9 +2,13 @@
 --package.path=package.path .. ";/User/Media/TouchSprite/lua/?.lua"
 
 --require "Common"
+luaExitIfCall(true)
 init("0",0)
 local Auto={}
 local Common={}
+Common.config={}
+Common.config.screenW,Common.config.screenH=getScreenSize()
+Common.config.baseW,Common.config.baseH=Common.config.screenW/2+10,Common.config.screenH-140-- 滑动手势 基本长宽
 ---*****基础方法*****
 Common.click=function(x,y)
 	local cx,cy=x + math.random(-5, 5), y + math.random(-5, 5)
@@ -57,35 +61,36 @@ Common.move=function(xs,ys,xd,yd,n)
         end
 end
     
-Common.slideUp=function(h)
-Common.move(255,1100,290,1100-h,4)--从最底部往上滑
+Common.slideUp=function(h)--平滑滑动，适用于朋友圈
+Common.move(Common.config.baseW,Common.config.baseH,Common.config.baseW-10,Common.config.baseH-h,4)--从最底部往上滑
 Common.sleepR(1000)
 end
-Common.slideUp2=function(h)
- touchDown(1,467,1000)
+Common.slideUp2=function(h) --突兀滑动，适用于列表
+ touchDown(1,Common.config.baseW,Common.config.baseH)
 		mSleep(2000)
-		touchMove(1,467,1000-h)
+		touchMove(1,Common.config.baseW,Common.config.baseH-h)
 		mSleep(1000)
-		touchUp(1,467,1000-h)
+		touchUp(1,Common.config.baseW,Common.config.baseH-h)
 end
 Common.slideLeft=function(w)
- touchDown(1,602,890)
+ touchDown(1,Common.config.screenW-100,Common.config.screenH-300)
 		mSleep(2000)
-		touchMove(1,602-w,890)
+		touchMove(1,Common.config.screenW-100-w,Common.config.screenH-300)
 		mSleep(1000)
-		touchUp(1,602-w,890)
+		touchUp(1,Common.config.screenW-100-w,Common.config.screenH-300)
 end
 Common.slideRight=function(w)
- touchDown(1,80,890)
+ touchDown(1,80,Common.config.screenH-300)
 		mSleep(2000)
-		touchMove(1,80+w,890)
+		touchMove(1,80+w,Common.config.screenH-300)
 		mSleep(1000)
-		touchUp(1,80+w,890)
+		touchUp(1,80+w,Common.config.screenH-300)
 end
 Common.slideDown=function(h) 
 Common.move(255,180,290,180+h,4)
 Common.sleepR(1000)
 end
+
 ---全局变量声明
 
 Auto.AddByNear={}
@@ -3081,5 +3086,8 @@ if key==Auto.getKey(no) then
 end
 	end
 end
-Auto.check()
-
+--Auto.check()
+Common.sleepR(2000)
+--Common.slideUp(600)
+Common.slideRight(500)
+dialog("k"..Common.config.screenW, 2)
