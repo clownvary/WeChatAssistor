@@ -6,9 +6,12 @@ luaExitIfCall(true)
 init("0",0)
 local Auto={}
 local Common={}
+local sz = require("sz")
+local json = sz.json
 Common.config={}
 Common.config.screenW,Common.config.screenH=getScreenSize()
 Common.config.baseW,Common.config.baseH=Common.config.screenW/2+10,Common.config.screenH-140-- 滑动手势 基本长宽
+Common.config.baseBarH=128--bar高128
 ---*****基础方法*****
 Common.click=function(x,y)
 	local cx,cy=x + math.random(-5, 5), y + math.random(-5, 5)
@@ -2920,7 +2923,7 @@ end
 ---初始界面
 Auto.InitMenu=function()
 
-local ui="{\"style\":\"default\",\"config\":\"save_menu.dat\",\"width\":600,\"views\":[{\"type\":\"Label\",\"text\":\"云集-微信助手\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"RadioGroup\",\"list\":\"★使用说明(必看),1.1-全球定位自动打招呼,2.1-通讯录好友自动推送发消息,2.2-通讯录好友自动推送收藏内容,2.3-通讯录好友自动推送发名片,2.4-通讯录好友自动推送消息（轮登）,2.5-通讯录好友自动推送收藏内容（轮登）,2.6-通讯录好友自动推送发名片（轮登）,3.1-最近联系人自动推送发消息,3.2-最近联系人自动推送发收藏内容,3.3-最近联系人自动推送发名片,3.4-最近联系人自动推送发消息（轮登）,3.5-最近联系人自动推送收藏内容（轮登）,3.6-最近联系人自动推送名片（轮登）,4.1-微信群自动推送发消息,4.2-微信群自动推送发收藏内容,4.3-微信群自动推送发名片,4.4-微信群自动推送发消息（轮登）,4.5-微信群自动推送收藏内容（轮登）,4.6-微信群自动推送名片（轮登）,5.1-自动扔漂流瓶\\n,5.2-自动捡漂流瓶,5.3-自动扔漂流瓶（轮登）,5.4-自动捡漂流瓶（轮登）,6.1-朋友圈自动点赞,6.2-朋友圈自动点赞+评论,6.3-朋友圈自动发文字,6.4-朋友圈自动发图文,6.5-朋友圈自动点赞（轮登）,6.6-朋友圈自动点赞+评论（轮登）,6.7-朋友圈自动发文字（轮登）,6.8-朋友圈自动发图文（轮登）,7.1-手机通讯录开通微信的自动添加,7.2-QQ列表开通微信的自动添加,7.3-通讯录新的朋友自动添加,7.4-自动查找号码添加,7.5-通讯录开通微信的自动添加（轮登）,7.6-QQ列表开通微信的自动添加(轮登),7.7-通讯录新的朋友自动添加(轮登),8.1-单群群成员自动添加,8.2-多群群成员自动添加,9.1-自动检测僵尸好友,9.2-自动检测僵尸好友并删除,9.3-屏蔽联系人朋友圈,9.4-自动检测僵尸好友（轮登）,9.5-自动检测僵尸好友并删除（轮登）,9.6-屏蔽联系人朋友圈（轮登）,10.1-自动接受通讯录好友请求,10.2-自动接受附近的人好友请求,10.3-自动接受通讯录好友请求（轮登）,10.4-自动接受附近的人好友请求（轮登）\",\"select\":\"1\"}]}"
+local ui="{\"style\":\"default\",\"config\":\"save_menu.dat\",\"width\":680,\"height\":936,\"views\":[{\"type\":\"Label\",\"text\":\"云集-微信助手\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"RadioGroup\",\"list\":\"★使用说明(必看),1.1-全球定位自动打招呼,2.1-通讯录好友自动推送发消息,2.2-通讯录好友自动推送收藏内容,2.3-通讯录好友自动推送发名片,2.4-通讯录好友自动推送消息（轮登）,2.5-通讯录好友自动推送收藏内容（轮登）,2.6-通讯录好友自动推送发名片（轮登）,3.1-最近联系人自动推送发消息,3.2-最近联系人自动推送发收藏内容,3.3-最近联系人自动推送发名片,3.4-最近联系人自动推送发消息（轮登）,3.5-最近联系人自动推送收藏内容（轮登）,3.6-最近联系人自动推送名片（轮登）,4.1-微信群自动推送发消息,4.2-微信群自动推送发收藏内容,4.3-微信群自动推送发名片,4.4-微信群自动推送发消息（轮登）,4.5-微信群自动推送收藏内容（轮登）,4.6-微信群自动推送名片（轮登）,5.1-自动扔漂流瓶\\n,5.2-自动捡漂流瓶,5.3-自动扔漂流瓶（轮登）,5.4-自动捡漂流瓶（轮登）,6.1-朋友圈自动点赞,6.2-朋友圈自动点赞+评论,6.3-朋友圈自动发文字,6.4-朋友圈自动发图文,6.5-朋友圈自动点赞（轮登）,6.6-朋友圈自动点赞+评论（轮登）,6.7-朋友圈自动发文字（轮登）,6.8-朋友圈自动发图文（轮登）,7.1-手机通讯录开通微信的自动添加,7.2-QQ列表开通微信的自动添加,7.3-通讯录新的朋友自动添加,7.4-自动查找号码添加,7.5-通讯录开通微信的自动添加（轮登）,7.6-QQ列表开通微信的自动添加(轮登),7.7-通讯录新的朋友自动添加(轮登),8.1-单群群成员自动添加,8.2-多群群成员自动添加,9.1-自动检测僵尸好友,9.2-自动检测僵尸好友并删除,9.3-屏蔽联系人朋友圈,9.4-自动检测僵尸好友（轮登）,9.5-自动检测僵尸好友并删除（轮登）,9.6-屏蔽联系人朋友圈（轮登）,10.1-自动接受通讯录好友请求,10.2-自动接受附近的人好友请求,10.3-自动接受通讯录好友请求（轮登）,10.4-自动接受附近的人好友请求（轮登）\",\"select\":\"1\"}]}"
 local ret,sel=showUI(ui)
 
 if ret==1 then
@@ -2957,7 +2960,7 @@ if ret==1 then
 	Auto.SentCardByLast.multiStart()
 	elseif sel==14 then--微信群
 	Auto.SentByGroup.start()
-	elseif sel==15then
+	elseif sel==15 then
 	Auto.SentFavByGroup.start()
 	elseif sel==16 then
 	Auto.SentCardByGroup.start()
@@ -2967,11 +2970,11 @@ if ret==1 then
 	Auto.SentFavByGroup.multiStart()
 	elseif sel==19 then
 	Auto.SentCardByGroup.multiStart()
-	elseif sel==20then
+	elseif sel==20 then
 	Auto.ThrowBox.start()--漂流瓶
 	elseif sel==21 then
 	Auto.PickBox.start()
-	elseif sel==22then
+	elseif sel==22 then
 	Auto.ThrowBox.multiStart()
 	elseif sel==23 then
 	Auto.PickBox.multiStart()
@@ -3071,9 +3074,58 @@ end
 ---使用说明
 Auto.check=function()
 local no=Auto.getDevId(getDeviceID())
-local ui="{\"style\":\"default\",\"config\":\"conf_1.dat\",\"views\":[{\"type\":\"Label\",\"text\":\"云集-微信助手\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"您的机器号：\",\"size\":24,\"align\":\"left\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\""
-ui=ui..no.."\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"},{\"type\":\"Label\",\"text\":\"输入授权码：\",\"size\":24,\"align\":\"left\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"prompt\":\"输入授权码\",\"text\":\"\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"}]}"
-
+local ui={
+	["style"]="default",
+	["width"] = Common.config.screenW-80,
+    ["height"] = Common.config.screenH-400,
+    ["config"] = "conf_1.dat",
+	views={
+		{
+			["type"]="Label",
+			["text"]="云集-微信助手",
+			["size"]=24,
+			["align"]="center",
+			["color"]="0,123,223"
+			
+		},
+		{
+			["type"]="Label",
+			["text"]="您的机器号：",
+			["size"]=24,
+			["align"]="left",
+			["color"]="0,123,223"
+			
+		},
+		{
+			["type"]="Label",
+			["text"]=no,
+			["size"]=15,
+			["align"]="left",
+			["color"]="255,0,0"
+			
+		},
+			{
+			["type"]="Label",
+			["text"]="输入授权码：",
+			["size"]=24,
+			["align"]="left",
+			["color"]="0,123,223"
+			
+		},
+			{
+			["type"]="Edit",
+			["prompt"]="输入授权码：",
+			["text"]="",
+			["size"]=15,
+			["align"]="left",
+			["color"]="255,0,0"
+			
+		},
+		isArray = true
+		}
+   
+}
+ui= json.encode(ui)
 local ret,key=showUI(ui)
 
 if ret==1 then
@@ -3086,8 +3138,6 @@ if key==Auto.getKey(no) then
 end
 	end
 end
---Auto.check()
-Common.sleepR(2000)
---Common.slideUp(600)
-Common.slideRight(500)
-dialog("k"..Common.config.screenW, 2)
+Auto.check()
+
+
