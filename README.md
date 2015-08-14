@@ -1,2 +1,2 @@
 # WeChatAssistor
-a lua script using in wechat business
+a  script using in wechat business
