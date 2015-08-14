@@ -2923,7 +2923,7 @@ end
 ---初始界面
 Auto.InitMenu=function()
 
-local ui="{\"style\":\"default\",\"config\":\"save_menu.dat\",\"width\":680,\"height\":936,\"views\":[{\"type\":\"Label\",\"text\":\"云集-微信助手\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"RadioGroup\",\"list\":\"★使用说明(必看),1.1-全球定位自动打招呼,2.1-通讯录好友自动推送发消息,2.2-通讯录好友自动推送收藏内容,2.3-通讯录好友自动推送发名片,2.4-通讯录好友自动推送消息（轮登）,2.5-通讯录好友自动推送收藏内容（轮登）,2.6-通讯录好友自动推送发名片（轮登）,3.1-最近联系人自动推送发消息,3.2-最近联系人自动推送发收藏内容,3.3-最近联系人自动推送发名片,3.4-最近联系人自动推送发消息（轮登）,3.5-最近联系人自动推送收藏内容（轮登）,3.6-最近联系人自动推送名片（轮登）,4.1-微信群自动推送发消息,4.2-微信群自动推送发收藏内容,4.3-微信群自动推送发名片,4.4-微信群自动推送发消息（轮登）,4.5-微信群自动推送收藏内容（轮登）,4.6-微信群自动推送名片（轮登）,5.1-自动扔漂流瓶\\n,5.2-自动捡漂流瓶,5.3-自动扔漂流瓶（轮登）,5.4-自动捡漂流瓶（轮登）,6.1-朋友圈自动点赞,6.2-朋友圈自动点赞+评论,6.3-朋友圈自动发文字,6.4-朋友圈自动发图文,6.5-朋友圈自动点赞（轮登）,6.6-朋友圈自动点赞+评论（轮登）,6.7-朋友圈自动发文字（轮登）,6.8-朋友圈自动发图文（轮登）,7.1-手机通讯录开通微信的自动添加,7.2-QQ列表开通微信的自动添加,7.3-通讯录新的朋友自动添加,7.4-自动查找号码添加,7.5-通讯录开通微信的自动添加（轮登）,7.6-QQ列表开通微信的自动添加(轮登),7.7-通讯录新的朋友自动添加(轮登),8.1-单群群成员自动添加,8.2-多群群成员自动添加,9.1-自动检测僵尸好友,9.2-自动检测僵尸好友并删除,9.3-屏蔽联系人朋友圈,9.4-自动检测僵尸好友（轮登）,9.5-自动检测僵尸好友并删除（轮登）,9.6-屏蔽联系人朋友圈（轮登）,10.1-自动接受通讯录好友请求,10.2-自动接受附近的人好友请求,10.3-自动接受通讯录好友请求（轮登）,10.4-自动接受附近的人好友请求（轮登）\",\"select\":\"1\"}]}"
+local ui="{\"style\":\"default\",\"config\":\"save_menu.dat\",\"width\":680,\"height\":936,\"views\":[{\"type\":\"Label\",\"text\":\"云集-微信助手\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"RadioGroup\",\"list\":\"★使用说明(必看),★一键还原分辨率,1.1-全球定位自动打招呼,2.1-通讯录好友自动推送发消息,2.2-通讯录好友自动推送收藏内容,2.3-通讯录好友自动推送发名片,2.4-通讯录好友自动推送消息（轮登）,2.5-通讯录好友自动推送收藏内容（轮登）,2.6-通讯录好友自动推送发名片（轮登）,3.1-最近联系人自动推送发消息,3.2-最近联系人自动推送发收藏内容,3.3-最近联系人自动推送发名片,3.4-最近联系人自动推送发消息（轮登）,3.5-最近联系人自动推送收藏内容（轮登）,3.6-最近联系人自动推送名片（轮登）,4.1-微信群自动推送发消息,4.2-微信群自动推送发收藏内容,4.3-微信群自动推送发名片,4.4-微信群自动推送发消息（轮登）,4.5-微信群自动推送收藏内容（轮登）,4.6-微信群自动推送名片（轮登）,5.1-自动扔漂流瓶\\n,5.2-自动捡漂流瓶,5.3-自动扔漂流瓶（轮登）,5.4-自动捡漂流瓶（轮登）,6.1-朋友圈自动点赞,6.2-朋友圈自动点赞+评论,6.3-朋友圈自动发文字,6.4-朋友圈自动发图文,6.5-朋友圈自动点赞（轮登）,6.6-朋友圈自动点赞+评论（轮登）,6.7-朋友圈自动发文字（轮登）,6.8-朋友圈自动发图文（轮登）,7.1-手机通讯录开通微信的自动添加,7.2-QQ列表开通微信的自动添加,7.3-通讯录新的朋友自动添加,7.4-自动查找号码添加,7.5-通讯录开通微信的自动添加（轮登）,7.6-QQ列表开通微信的自动添加(轮登),7.7-通讯录新的朋友自动添加(轮登),8.1-单群群成员自动添加,8.2-多群群成员自动添加,9.1-自动检测僵尸好友,9.2-自动检测僵尸好友并删除,9.3-屏蔽联系人朋友圈,9.4-自动检测僵尸好友（轮登）,9.5-自动检测僵尸好友并删除（轮登）,9.6-屏蔽联系人朋友圈（轮登）,10.1-自动接受通讯录好友请求,10.2-自动接受附近的人好友请求,10.3-自动接受通讯录好友请求（轮登）,10.4-自动接受附近的人好友请求（轮登）\",\"select\":\"1\"}]}"
 local ret,sel=showUI(ui)
 
 if ret==1 then
@@ -2933,113 +2933,123 @@ if ret==1 then
 	if sel==0 then
 	Auto.intro()
     elseif sel==1 then
+	Auto.recovery()
+    elseif sel==2 then
 	Auto.AddByNear.start()
-	 elseif sel==2 then
-	Auto.SentByContact.start()---通讯录
 	 elseif sel==3 then
-	Auto.SentFavByContact.start()
+	Auto.SentByContact.start()---通讯录
 	 elseif sel==4 then
+	Auto.SentFavByContact.start()
+	 elseif sel==5 then
 	Auto.SentCardByContact.start()
-	elseif sel==5 then
-	Auto.SentByContact.multiStart()
 	elseif sel==6 then
-	Auto.SentFavByContact.multiStart()
+	Auto.SentByContact.multiStart()
 	elseif sel==7 then
-	Auto.SentCardByContact.multiStart()
+	Auto.SentFavBycontact.multiStart()
 	elseif sel==8 then
-	Auto.SentByLast.start()--最近联系人
+	Auto.SentCardByContact.multiStart()
 	elseif sel==9 then
-	Auto.SentFavByLast.start()
+	Auto.SentByLast.start()--最近联系人
 	elseif sel==10 then
-	Auto.SentCardByLast.start()
+	Auto.SentFavByLast.start()
 	elseif sel==11 then
-	Auto.SentByLast.multiStart()
+	Auto.SentCardByLast.start()
 	elseif sel==12 then
-	Auto.SentFavByLast.multiStart()
+	Auto.SentByLast.multiStart()
 	elseif sel==13 then
+	Auto.SentFavByLast.multiStart()
+	elseif sel==14 then
 	Auto.SentCardByLast.multiStart()
-	elseif sel==14 then--微信群
+	elseif sel==15 then--微信群
 	Auto.SentByGroup.start()
-	elseif sel==15 then
-	Auto.SentFavByGroup.start()
 	elseif sel==16 then
-	Auto.SentCardByGroup.start()
+	Auto.SentFavByGroup.start()
 	elseif sel==17 then
-	Auto.SentByGroup.multiStart()
+	Auto.SentCardByGroup.start()
 	elseif sel==18 then
-	Auto.SentFavByGroup.multiStart()
+	Auto.SentByGroup.multiStart()
 	elseif sel==19 then
-	Auto.SentCardByGroup.multiStart()
+	Auto.SentFavByGroup.multiStart()
 	elseif sel==20 then
-	Auto.ThrowBox.start()--漂流瓶
+	Auto.SentCardByGroup.multiStart()
 	elseif sel==21 then
-	Auto.PickBox.start()
+	Auto.ThrowBox.start()--漂流瓶
 	elseif sel==22 then
-	Auto.ThrowBox.multiStart()
+	Auto.PickBox.start()
 	elseif sel==23 then
+	Auto.ThrowBox.multiStart()
+	elseif sel==24 then
 	Auto.PickBox.multiStart()
-	elseif sel==24 then--朋友圈
+	elseif sel==25 then--朋友圈
 	Auto.Like.start()
-	elseif sel==25 then
-	Auto.LikeAndComment.start()
 	elseif sel==26 then
-	Auto.AutoMomentsWord.start()
+	Auto.LikeAndComment.start()
 	elseif sel==27 then
-	Auto.AutoMomentsImg.start()
+	Auto.AutoMomentsWord.start()
 	elseif sel==28 then
-	Auto.Like.multiStart()
+	Auto.AutoMomentsImg.start()
 	elseif sel==29 then
-	Auto.LikeAndComment.multiStart()
+	Auto.Like.multiStart()
 	elseif sel==30 then
-	Auto.AutoMomentsWord.multiStart()
+	Auto.LikeAndComment.multiStart()
 	elseif sel==31 then
+	Auto.AutoMomentsWord.multiStart()
+	elseif sel==32 then
 	Auto.AutoMomentsImg.multiStart()
-	elseif sel==32 then--添加
+	elseif sel==33 then--添加
 	Auto.AddByContactHasWX.start()
-	elseif sel==33 then
-	Auto.AddByQQHasWX.start()
 	elseif sel==34 then
-	Auto.AutoRecieve.start()
+	Auto.AddByQQHasWX.start()
 	elseif sel==35 then
-	Auto.AddBySearch.start()
-	elseif sel==36 then
-	Auto.AddByContactHasWX.multiStart()
-	elseif sel==37 then
-	Auto.AddByQQHasWX.multiStart()
-	elseif sel==38 then
-	Auto.AutoRecieve.multiStart()
-	elseif sel==39 then--群
-	Auto.AddByGroup.start()
-	elseif sel==40 then
-	Auto.AddByMultiGroup.start()
-	elseif sel==41 then--检测
-	Auto.ZombieCheck.start()
-	elseif sel==42 then
-	Auto.ZombieCheckDel.start()
-	elseif sel==43 then
-	Auto.NoMoments.start()
-	elseif sel==44 then
-	Auto.ZombieCheck.multiStart()
-	elseif sel==45 then
-	Auto.ZombieCheckDel.multiStart()
-	elseif sel==46 then
-	Auto.NoMoments.multiStart()
-	elseif sel==47 then--接受请求
 	Auto.AutoRecieve.start()
-	elseif sel==48 then
-	Auto.AutoRecieveNearBy.start()
-	elseif sel==49 then
+	elseif sel==36 then
+	Auto.AddBySearch.start()
+	elseif sel==37 then
+	Auto.AddByContactHasWX.multiStart()
+	elseif sel==38 then
+	Auto.AddByQQHasWX.multiStart()
+	elseif sel==39 then
 	Auto.AutoRecieve.multiStart()
+	elseif sel==30 then--群
+	Auto.AddByGroup.start()
+	elseif sel==41 then
+	Auto.AddByMultiGroup.start()
+	elseif sel==42 then--检测
+	Auto.ZombieCheck.start()
+	elseif sel==43 then
+	Auto.ZombieCheckDel.start()
+	elseif sel==44 then
+	Auto.NoMoments.start()
+	elseif sel==45 then
+	Auto.ZombieCheck.multiStart()
+	elseif sel==46 then
+	Auto.ZombieCheckDel.multiStart()
+	elseif sel==47 then
+	Auto.NoMoments.multiStart()
+	elseif sel==48 then--接受请求
+	Auto.AutoRecieve.start()
+	elseif sel==49 then
+	Auto.AutoRecieveNearBy.start()
 	elseif sel==50 then
+	Auto.AutoRecieve.multiStart()
+	elseif sel==51 then
 	Auto.AutoRecieveNearBy.multiStart()
 	
 end
 	
 end
 end
+--一键还原分辨率
+Auto.recovery=function()
+	     dialog("正在进行屏幕分辨率还原，会有几秒的黑屏，请勿担心", 3)
+		  setScreenResolution("default")
+         Common.sleepR(2000)
+		 dialog("分辨率还原成功", 2)  
+		 lua_exit() 
+	end
 ---使用说明
 Auto.intro=function()
-local ui="{\"style\":\"default\",\"views\":[{\"type\":\"Label\",\"text\":\"使用说明\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"1.本脚本运行在触动精灵程序中，触动精灵主目录为 文件系统（越狱）/User/Media/TouchSprite/\\n 2.将 微信助手.luac 放到主目录/lua/下\\n 3.确认以上操作无勿，开始使用微信助手！\\n 10大模块共计50项功能 \\n -安全起见，轮登请不要超过3个号\\n -微信6.1，支持ios7~8.1.1系统\\n  -若运行时出现错误和点击位置不正确，重新启动相应功能即可\\n\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"}]}"
+local ui="{\"style\":\"default\",\"views\":[{\"type\":\"Label\",\"text\":\"使用说明\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"1.本脚本运行在触动精灵程序中，触动精灵主目录为 文件系统（越狱）/User/Media/TouchSprite/\\n 2.不想使用时，若分辨率发生变化，请选择 '一键还原分辨率'即可\\n 3.确认以上操作无勿，开始使用微信助手，每个功能都会有相应的启动页面提示，按照提示来即可！\\n 10大模块共计50项功能 \\n -安全起见，轮登请不要超过3个号\\n -确保微信6.1以上，ios8以上系统\\n  -若运行时出现错误和点击位置不正确，停止脚步并重新启动相应功能即可\\n\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"}]}"
 local ret=showUI(ui)
 end
 ---加密解密
@@ -3127,7 +3137,10 @@ local ui={
 }
 ui= json.encode(ui)
 local ret,key=showUI(ui)
-
+--setScreenResolution("640x1136")
+--Common.sleepR(2000)
+--runApp("com.tencent.xin._fenshen_")
+--Common.sleepR(2000)
 if ret==1 then
 if key==Auto.getKey(no) then
     Auto.InitMenu()
@@ -3138,6 +3151,46 @@ if key==Auto.getKey(no) then
 end
 	end
 end
-Auto.check()
+Auto.checkVer=function()
+tsver = getTSVer()     --获取触动精灵版本
+tsint = tonumber(string.sub(tsver, 1, 1)..string.sub(tsver, 3,3)..string.sub(tsver, 5,5))
+--转化为数字版本号
+sysver = getOSVer()   --获取系统版本
+local sysint=0
+if string.len(sysver) ==3 then
+	sysint = tonumber(string.sub(sysver, 1, 1)..string.sub(sysver, 3,3))
+else
+	sysint = tonumber(string.sub(sysver, 1, 1)..string.sub(sysver, 3,3)..string.sub(sysver, 5, 5))
+end
+--转化为数字版本号
+if (tsint >= 221 and sysint >= 800) or (tsint >= 221 and sysint >= 80)  then 
+   return true
+else
+    return false
+end
+end
 
+Auto.DevResponseInit=function()--系统自适配初始化
+	    dialog("正在进行设备检查，请稍等...", 2)
+		local w,h=getScreenSize()
+		if w==640 and h==1136 then --如果ip5
+		Auto.check()
+	else --不是ip5
+	    if  Auto.checkVer() then --如果版本和系统版本符合
+	     dialog("正在进行屏幕分辨率调整，会有几秒的黑屏，请勿担心", 3)
+		  setScreenResolution("640x1136")
+         Common.sleepR(2000)
+          runApp("com.tencent.xin")
+          Common.sleepR(2000)
+		 dialog("分辨率设置成功，可以开始使用", 2)  
+		 lua_restart() 
+	 else
+		dialog("请将系统升级到ios8以上，触动精灵版本2.2.1以上", 4)
+		lua_exit()
+		end
+		
+	end
+		
+end
+Auto.DevResponseInit()
 
