@@ -3010,7 +3010,7 @@ if ret==1 then
 	Auto.AddByQQHasWX.multiStart()
 	elseif sel==39 then
 	Auto.AutoRecieve.multiStart()
-	elseif sel==30 then--群
+	elseif sel==40 then--群
 	Auto.AddByGroup.start()
 	elseif sel==41 then
 	Auto.AddByMultiGroup.start()
