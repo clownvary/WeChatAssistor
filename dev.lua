@@ -3143,7 +3143,28 @@ local ret,key=showUI(ui)
 --Common.sleepR(2000)
 if ret==1 then
 if key==Auto.getKey(no) then
-    Auto.InitMenu()
+	
+	 dialog("正在进行设备检查，请稍等...", 2)
+		local w,h=getScreenSize()
+		if w==640 and h==1136 then --如果ip5
+		Auto.InitMenu()
+	else --不是ip5
+	    if  Auto.checkVer() then --如果版本和系统版本符合
+	     dialog("正在进行屏幕分辨率调整，会有几秒的黑屏，请勿担心", 3)
+		  setScreenResolution("640x1136")
+         Common.sleepR(2000)
+          runApp("com.tencent.xin")
+          Common.sleepR(2000)
+		 dialog("分辨率设置成功，可以开始使用", 2)  
+		 dialog("请按音量减重新启动软件，开始使用", 2)   
+		 --lua_restart() 
+	 else
+		dialog("请将系统升级到ios8以上，触动精灵版本2.2.1以上", 4)
+		lua_exit()
+		end
+		
+	end
+    
     else
     dialog("授权码错误,请联系软件代理商",3)
 	Common.sleepR(3000)
@@ -3174,7 +3195,7 @@ Auto.DevResponseInit=function()--系统自适配初始化
 	    dialog("正在进行设备检查，请稍等...", 2)
 		local w,h=getScreenSize()
 		if w==640 and h==1136 then --如果ip5
-		Auto.check()
+		--Auto.check()
 	else --不是ip5
 	    if  Auto.checkVer() then --如果版本和系统版本符合
 	     dialog("正在进行屏幕分辨率调整，会有几秒的黑屏，请勿担心", 3)
@@ -3192,5 +3213,5 @@ Auto.DevResponseInit=function()--系统自适配初始化
 	end
 		
 end
-Auto.DevResponseInit()
+Auto.check()
 
