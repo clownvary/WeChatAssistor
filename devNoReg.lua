@@ -2702,7 +2702,7 @@ Auto.ZombieCheckDel.sent=function(i)
 			Common.sleepR(800)
 			Common.click(299,1053)--点击删除
 			Common.sleepR(800)
-			Common.click(311,982)
+			Common.click(311,912)
 			Common.sleepR(1000)
 		end
 		Common.click(48,84)

@@ -2702,7 +2702,7 @@ Auto.ZombieCheckDel.sent=function(i)
 			Common.sleepR(800)
 			Common.click(299,1053)--点击删除
 			Common.sleepR(800)
-			Common.click(311,982)
+			Common.click(311,912)
 			Common.sleepR(1000)
 		end
 		Common.click(48,84)
@@ -3109,7 +3109,7 @@ Auto.check=function()
 	local ui={
 		["style"]="default",
 		["width"] = Common.config.screenW-80,
-		["height"] = Common.config.screenH-400,
+		["height"] = Common.config.screenH-500,
 		["config"] = "conf_1.dat",
 		views={
 			{
@@ -3120,39 +3120,7 @@ Auto.check=function()
 				["color"]="0,123,223"
 
 			},
-			{
-				["type"]="Label",
-				["text"]="您的机器号：",
-				["size"]=24,
-				["align"]="left",
-				["color"]="0,123,223"
-
-			},
-			{
-				["type"]="Label",
-				["text"]=no,
-				["size"]=15,
-				["align"]="left",
-				["color"]="255,0,0"
-
-			},
-			{
-				["type"]="Label",
-				["text"]="输入授权码：",
-				["size"]=24,
-				["align"]="left",
-				["color"]="0,123,223"
-
-			},
-			{
-				["type"]="Edit",
-				["prompt"]="输入授权码：",
-				["text"]="",
-				["size"]=15,
-				["align"]="left",
-				["color"]="255,0,0"
-
-			},
+			
 			{
 				["type"]="Label",
 				["text"]="诚招代理\n联系QQ：1174971915",
@@ -3167,13 +3135,13 @@ Auto.check=function()
 
 	}
 	ui= json.encode(ui)
-	local ret,key=showUI(ui)
+	--local ret,key=showUI(ui)
 	--setScreenResolution("640x1136")
 	--Common.sleepR(2000)
 	--runApp("com.tencent.xin._fenshen_")
 	--Common.sleepR(2000)
-	if ret==1 then
-		if key==Auto.getKey(no) then
+	--if ret==1 then
+		
 
 			dialog("正在进行设备检查，请稍等...", 2)
 			local w,h=getScreenSize()
@@ -3196,12 +3164,7 @@ Auto.check=function()
 
 			end
 
-		else
-			dialog("授权码错误,请联系软件代理商",3)
-			Common.sleepR(3000)
-			lua_exit()
-		end
-	end
+	
 end
 Auto.checkVer=function()
 	tsver = getTSVer()     --获取触动精灵版本
