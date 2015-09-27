@@ -76,18 +76,18 @@ Common.slideUp2=function(h) --突兀滑动，适用于列表
 	touchUp(1,Common.config.baseW,Common.config.baseH-h)
 end
 Common.slideLeft=function(w)
-	touchDown(1,Common.config.screenW-100,Common.config.screenH-300)
+	touchDown(1,Common.config.screenW-100,Common.config.screenH-250)
 	mSleep(2000)
-	touchMove(1,Common.config.screenW-100-w,Common.config.screenH-300)
+	touchMove(1,Common.config.screenW-100-w,Common.config.screenH-250)
 	mSleep(1000)
-	touchUp(1,Common.config.screenW-100-w,Common.config.screenH-300)
+	touchUp(1,Common.config.screenW-100-w,Common.config.screenH-250)
 end
 Common.slideRight=function(w)
-	touchDown(1,80,Common.config.screenH-300)
+	touchDown(1,80,Common.config.screenH-250)
 	mSleep(2000)
-	touchMove(1,80+w,Common.config.screenH-300)
+	touchMove(1,80+w,Common.config.screenH-250)
 	mSleep(1000)
-	touchUp(1,80+w,Common.config.screenH-300)
+	touchUp(1,80+w,Common.config.screenH-250)
 end
 Common.slideDown=function(h) 
 	Common.move(255,180,290,180+h,4)
@@ -2581,7 +2581,7 @@ Auto.ZombieCheck.sent=function(i)
 	end
 	Common.click(306,218+(n*Auto.ZombieCheck.config.row_h))
 	Common.sleepR(Auto.ZombieCheck.config.g_s_time)	
-	local x,y=findMultiColorInRegionFuzzy("0x888888","-15|-4|0x8F8F8F,-10|11|0x8E8E8E,24|0|0x888888",100,21,314,623,1030)--找详细资料中的相册文字
+	local x,y=findMultiColorInRegionFuzzy( 0x9d9d9d, "6|-2|0x484848,11|0|0xffffff,18|-2|0x484848,21|8|0x8d8d8d", 90,21,314,623,1030)--找详细资料中的相册文字
 	if x ~= -1 and y ~= -1 then    
 		Common.click(x+100,y+15)
 		Common.sleepR(2000)
@@ -2690,7 +2690,7 @@ Auto.ZombieCheckDel.sent=function(i)
 	end
 	Common.click(306,218+(n*Auto.ZombieCheckDel.config.row_h))
 	Common.sleepR(Auto.ZombieCheckDel.config.g_s_time)	
-	local x,y=findMultiColorInRegionFuzzy("0x888888","-15|-4|0x8F8F8F,-10|11|0x8E8E8E,24|0|0x888888",100,21,314,623,1030)--找详细资料中的相册文字
+	local x,y=findMultiColorInRegionFuzzy( 0x9d9d9d, "6|-2|0x484848,11|0|0xffffff,18|-2|0x484848,21|8|0x8d8d8d", 90,21,314,623,1030)--找详细资料中的相册文字
 	if x ~= -1 and y ~= -1 then    
 		Common.click(x+100,y+15)
 		Common.sleepR(2000)
@@ -3208,5 +3208,6 @@ Auto.DevResponseInit=function()--系统自适配初始化
 
 end
 Auto.check()
-
+--local x,y=findMultiColorInRegionFuzzy( 0x9d9d9d, "6|-2|0x484848,11|0|0xffffff,18|-2|0x484848,21|8|0x8d8d8d", 90,21,314,623,1030)
+--dialog("x"..x.."y"..y, 2000)
 
