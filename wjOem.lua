@@ -2698,13 +2698,20 @@ Auto.ZombieCheckDel.sent=function(i)
 		if b_x==-1 and b_y==-1 then
 			Common.click(48,84)
 			Common.sleepR(800)
-			Common.clickS(588,89)--点击更多
+				Common.clickS(588,89)--点击更多
 			Common.sleepR(800)
-			Common.click(299,1053)--点击删除
+			local x1,y1 = findColorInRegionFuzzy( 0xec5050, 90,3, 508, 610, 1116)--找删除按钮
+			Common.click(x1+100,y1+10)--点击删除
 			Common.sleepR(800)
-			Common.click(311,912)
+			local del_x,del_y = findColorInRegionFuzzy( 0xe64340, 90, 5, 787, 632, 1128)--找红色删除文字
+			if del_x~=-1 and del_y~=-1 then --有两种删除方式
+				Common.click(del_x,del_y)
+			else
+				Common.click(303,885)
+			end
 			Common.sleepR(1000)
-		end
+			isDel=true	
+				end
 		Common.click(48,84)
 		Common.sleepR(700)	 
 		Common.click(48,84)
@@ -2718,6 +2725,7 @@ Auto.ZombieCheckDel.sent=function(i)
 		Common.slideUp2(Auto.ZombieCheckDel.config.page_h)
 		Common.sleepR(Auto.ZombieCheckDel.config.g_s_time)	
 	end		
+return isDel
 
 end
 Auto.ZombieCheckDel.start=function()

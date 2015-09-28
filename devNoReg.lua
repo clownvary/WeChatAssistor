@@ -2682,7 +2682,8 @@ end
 ---*****026*****
 ---*****自动检测僵尸好友并删除*****
 Auto.ZombieCheckDel.sent=function(i)
-	local n	
+	local n
+	local isDel=false
 	if(i%5==0) then
 		n=4
 	else
@@ -2700,10 +2701,18 @@ Auto.ZombieCheckDel.sent=function(i)
 			Common.sleepR(800)
 			Common.clickS(588,89)--点击更多
 			Common.sleepR(800)
-			Common.click(299,1053)--点击删除
+			local x1,y1 = findColorInRegionFuzzy( 0xec5050, 90,3, 508, 610, 1116)--找删除按钮
+			Common.click(x1+100,y1+10)--点击删除
 			Common.sleepR(800)
-			Common.click(311,912)
+			local del_x,del_y = findColorInRegionFuzzy( 0xe64340, 90, 5, 787, 632, 1128)--找红色删除文字
+			if del_x~=-1 and del_y~=-1 then --有两种删除方式
+				Common.click(del_x,del_y)
+			else
+				Common.click(303,885)
+			end
 			Common.sleepR(1000)
+			isDel=true
+
 		end
 		Common.click(48,84)
 		Common.sleepR(700)	 
@@ -2718,11 +2727,12 @@ Auto.ZombieCheckDel.sent=function(i)
 		Common.slideUp2(Auto.ZombieCheckDel.config.page_h)
 		Common.sleepR(Auto.ZombieCheckDel.config.g_s_time)	
 	end		
+	return isDel
 
 end
 Auto.ZombieCheckDel.start=function()
 	Auto.ZombieCheckDel.config.page_h=535
-	Auto.ZombieCheckDel.config.row_h=Auto.ZombieCheckDel.config.page_h/5
+	Auto.ZombieCheckDel.config.row_h=Auto.ZombieCheckDel.config.page_h/6
 	Auto.ZombieCheckDel.config.g_s_time=1000 --一般操作延迟时间
 	Auto.ZombieCheckDel.config.num=3--添加人数
 
@@ -2732,9 +2742,12 @@ Auto.ZombieCheckDel.start=function()
 	Common.slideUp2(562)
 	if ret==1 then
 		Auto.ZombieCheckDel.config.num=num
-
+	
 		for i=1,Auto.ZombieCheckDel.config.num do
-			Auto.ZombieCheckDel.sent(i)
+		
+				Auto.ZombieCheckDel.sent(i)
+
+		
 		end
 
 
@@ -3120,7 +3133,7 @@ Auto.check=function()
 				["color"]="0,123,223"
 
 			},
-			
+
 			{
 				["type"]="Label",
 				["text"]="诚招代理\n联系QQ：1174971915",
@@ -3141,30 +3154,30 @@ Auto.check=function()
 	--runApp("com.tencent.xin._fenshen_")
 	--Common.sleepR(2000)
 	--if ret==1 then
-		
 
-			dialog("正在进行设备检查，请稍等...", 2)
-			local w,h=getScreenSize()
-			if w==640 and h==1136 then --如果ip5
-				Auto.InitMenu()
-			else --不是ip5
-				if  Auto.checkVer() then --如果版本和系统版本符合
-					dialog("正在进行屏幕分辨率调整，会有几秒的黑屏，请勿担心", 3)
-					setScreenResolution("640x1136")
-					Common.sleepR(2000)
-					runApp("com.tencent.xin")
-					Common.sleepR(2000)
-					dialog("分辨率设置成功，可以开始使用", 2)  
-					dialog("请按音量减重新启动软件，开始使用", 2)   
-					--lua_restart() 
-				else
-					dialog("请将系统升级到ios8以上，触动精灵版本2.2.1以上", 4)
-					lua_exit()
-				end
 
-			end
+	dialog("正在进行设备检查，请稍等...", 2)
+	local w,h=getScreenSize()
+	if w==640 and h==1136 then --如果ip5
+		Auto.InitMenu()
+	else --不是ip5
+		if  Auto.checkVer() then --如果版本和系统版本符合
+			dialog("正在进行屏幕分辨率调整，会有几秒的黑屏，请勿担心", 3)
+			setScreenResolution("640x1136")
+			Common.sleepR(2000)
+			runApp("com.tencent.xin")
+			Common.sleepR(2000)
+			dialog("分辨率设置成功，可以开始使用", 2)  
+			dialog("请按音量减重新启动软件，开始使用", 2)   
+			--lua_restart() 
+		else
+			dialog("请将系统升级到ios8以上，触动精灵版本2.2.1以上", 4)
+			lua_exit()
+		end
 
-	
+	end
+
+
 end
 Auto.checkVer=function()
 	tsver = getTSVer()     --获取触动精灵版本
@@ -3208,6 +3221,5 @@ Auto.DevResponseInit=function()--系统自适配初始化
 
 end
 Auto.check()
---local x,y=findMultiColorInRegionFuzzy( 0x9d9d9d, "6|-2|0x484848,11|0|0xffffff,18|-2|0x484848,21|8|0x8d8d8d", 90,21,314,623,1030)
---dialog("x"..x.."y"..y, 2000)
+
 
