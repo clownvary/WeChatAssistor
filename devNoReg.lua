@@ -941,7 +941,7 @@ Auto.AddByGroup.add=function(i)
 end
 Auto.AddByGroup.start=function()
 	Auto.AddByGroup.config.g_s_time=1000 --一般操作延迟时间
-	Auto.AddByGroup.config.page_h=787--群成员4行高度
+	Auto.AddByGroup.config.page_h=760--群成员4行高度
 	Auto.AddByGroup.config.row_w=640/4--群成员一行宽度
 	Auto.AddByGroup.config.row_h=Auto.AddByGroup.config.page_h/4
 	Auto.AddByGroup.config.num=3--要接受的次数
@@ -1015,7 +1015,7 @@ Auto.AddByMultiGroup.add=function(i)
 end
 Auto.AddByMultiGroup.start=function()
 	Auto.AddByMultiGroup.config.g_s_time=1000 --一般操作延迟时间
-	Auto.AddByMultiGroup.config.page_h=787--群成员4行高度
+	Auto.AddByMultiGroup.config.page_h=760--群成员4行高度
 	Auto.AddByMultiGroup.config.row_w=640/4--群成员一行宽度
 	Auto.AddByMultiGroup.config.row_h=Auto.AddByMultiGroup.config.page_h/4
 	Auto.AddByMultiGroup.config.list_h=110
