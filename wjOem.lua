@@ -331,6 +331,8 @@ Auto.AddBySearch.startAdd=function()
 	inputText(curNum)	
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)
 	Common.click(341,1088)
+	Common.sleepR(Auto.AddBySearch.config.g_s_time)
+	Common.click(603,980)
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)	 
 	Common.click(541,1081)--点击搜索
 	Common.sleepR(2000) --搜索延迟要长

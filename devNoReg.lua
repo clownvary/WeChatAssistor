@@ -328,9 +328,11 @@ Auto.AddBySearch.startAdd=function()
 	Common.click(180,204)--点击输入
 	Common.sleepR(Auto.AddBySearch.config.g_s_time) 
 	local curNum=Auto.AddBySearch.readOneRec()	 
-	inputText(curNum)	
+	inputText(351124274)	
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)
 	Common.click(341,1088)
+	Common.sleepR(Auto.AddBySearch.config.g_s_time)
+	Common.click(603,980)
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)	 
 	Common.click(541,1081)--点击搜索
 	Common.sleepR(2000) --搜索延迟要长
@@ -338,29 +340,29 @@ Auto.AddBySearch.startAdd=function()
 	x, y =findMultiColorInRegionFuzzy(0x06bf04,"-198|-9|0xfafefa,-12|-15|0xffffff,-107|11|0xffffff",90,4,307,640,1070)
 
 
-	if x ~= -1 and y ~= -1 then    
-		Common.click(x+15,y+15)
-		Common.sleepR(2000)	 		
-		Auto.AddBySearch.addToContact(x,y)
-	else 
-		local c_x,c_y=findColorInRegionFuzzy(0x06BF04,100, 4, 307, 640, 1070)	--是否是发消息按钮（已添加好友）
-		if c_x ~= -1 and c_y ~= -1 then  
-			Common.click(48,80)--点击取消2，返回初页	
-			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
-			Common.click(587,83)--点击取消1	
-			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
-			Common.click(48,80)--点击取消2，返回初页	
-		else
-			Common.click(587,83)--点击取消1	
-			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
-			Common.click(48,80)--点击取消2，返回初页		
+--	if x ~= -1 and y ~= -1 then    
+--		Common.click(x+15,y+15)
+--		Common.sleepR(2000)	 		
+--		Auto.AddBySearch.addToContact(x,y)
+--	else 
+--		local c_x,c_y=findColorInRegionFuzzy(0x06BF04,100, 4, 307, 640, 1070)	--是否是发消息按钮（已添加好友）
+--		if c_x ~= -1 and c_y ~= -1 then  
+--			Common.click(48,80)--点击取消2，返回初页	
+--			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+--			Common.click(587,83)--点击取消1	
+--			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+--			Common.click(48,80)--点击取消2，返回初页	
+--		else
+--			Common.click(587,83)--点击取消1	
+--			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+--			Common.click(48,80)--点击取消2，返回初页		
 
-		end
-
-
+--		end
 
 
-	end		
+
+
+--	end		
 end
 Auto.AddBySearch.start=function()
 
