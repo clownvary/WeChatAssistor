@@ -328,7 +328,7 @@ Auto.AddBySearch.startAdd=function()
 	Common.click(180,204)--点击输入
 	Common.sleepR(Auto.AddBySearch.config.g_s_time) 
 	local curNum=Auto.AddBySearch.readOneRec()	 
-	inputText(351124274)	
+	inputText(curNum)	
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)
 	Common.click(341,1088)
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)
