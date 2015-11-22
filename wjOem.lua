@@ -892,31 +892,47 @@ end
 ---*****006*****
 ---*****单群自动加群好友*****
 Auto.AddByGroup.add=function(i)
-	local n,r
-	if(i%4==0) then
-		n=3
-	else
-		n=(i%4)-1	 
+	local r
+	if (i%7==0) then
+	r=0
+     else
+	r=(i%7)-1
 	end
-
-	count=i%16
-	if count==0 then
-		r=3
-	else
-		r=math.ceil(count/4)-1
-	end
-
 	---翻页后重新计算r
-	Common.clickS(92+(n*Auto.AddByGroup.config.row_w),223+(r*Auto.AddByGroup.config.row_h))
+	Common.clickS(92,185+(r*Auto.AddByGroup.config.row_h))
 	Common.sleepR(Auto.AddByGroup.config.g_s_time)	
 	--local x, y = findColorInRegionFuzzy('addBtn.bmp',80, 4, 307, 640, 1070)
 
 	local x, y=findMultiColorInRegionFuzzy(0x06bf04,"-198|-9|0xfafefa,-12|-15|0xffffff,-107|11|0xffffff",100,4,307,640,1070)
 	if x ~= -1 and y ~= -1 then    
+		
+		if Auto.AddByGroup.config.label~='n' and Auto.AddByGroup.config.label~=''  then
+	
+			----打标签开始
+			Common.clickS(207,418)---点击标签
+			Common.sleepR(1000)
+			Common.clickS(208,405)
+			Common.sleepR(1000)
+			Common.clickS(328,185)
+			Common.sleepR(1000)
+			inputText(Auto.AddByGroup.config.label)
+			Common.sleepR(600)
+			Common.clickS(589,84)
+			Common.sleepR(1000)
+			Common.clickS(589,84)
+			Common.sleepR(1000)
+			---打标签结束
+		end
 		Common.click(x+15,y+15)
 		Common.sleepR(2400)
 		local c_x,c_y=findColorInRegionFuzzy(0x05BA03,90, 557,61 , 625,98)--找“发送”按钮，判断需要还是不需要验证
-		if c_x~=-1 and c_y~=-1 then --如果需要验证
+		if c_x==-1 and c_y==-1 then --如果需要验证
+			if Auto.AddByGroup.config.look==0 then
+				---切换查看朋友圈开始
+				Common.clickS(555,410)
+				Common.sleepR(700)
+				---切换查看朋友圈结束
+			end
 			Common.click(581,251)--点击清除文本信息
 			Common.sleepR(Auto.AddByGroup.config.g_s_time)		
 			inputText(Auto.AddByGroup.config.say[math.random(1,3)])
@@ -936,25 +952,35 @@ Auto.AddByGroup.add=function(i)
 		Common.click(48,80)--点击取消2，返回初页		
 		Common.sleepR(Auto.AddByGroup.config.g_s_time)
 	end	
-	if(i%16==0) then
+	
+	if(i%7==0) then
 		Common.slideUp(Auto.AddByGroup.config.page_h)
 		Common.sleepR(Auto.AddByGroup.config.g_s_time)	
 	end		
 end
 Auto.AddByGroup.start=function()
 	Auto.AddByGroup.config.g_s_time=1000 --一般操作延迟时间
-	Auto.AddByGroup.config.page_h=760--群成员4行高度
+	Auto.AddByGroup.config.page_h=768--群成员7行高度
 	Auto.AddByGroup.config.row_w=640/4--群成员一行宽度
-	Auto.AddByGroup.config.row_h=Auto.AddByGroup.config.page_h/4
-	Auto.AddByGroup.config.num=3--要接受的次数
+	Auto.AddByGroup.config.row_h=Auto.AddByGroup.config.page_h/7
+	Auto.AddByGroup.config.searchBarH=98
+	Auto.AddByGroup.config.look=0
+	Auto.AddByGroup.config.label='软件添加'	
+	Auto.AddByGroup.config.num=3
 
-	local ui="{\"style\":\"default\",\"config\":\"save_006.dat\",\"views\":[{\"type\":\"Label\",\"text\":\"自动加群好友\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"注意：启动界面：微信-->你要加的群-->群(右上角)-->群成员页面\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"},{\"type\":\"Label\",\"text\":\"要加群成员数（在群成员页面查看）\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"prompt\":\"成员数\",\"text\":\"5\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"验证文本\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"你好啊，交个朋友\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"今天吃的什么\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"猜猜我是谁\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"}]}"
-	local ret,num,txt1,txt2,txt3=showUI(ui)
-	Common.sleepR(2000)
+
+	local ui="{\"style\":\"default\",\"config\":\"save_006.dat\",\"views\":[{\"type\":\"Label\",\"text\":\"自动加群好友\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"注意：启动界面：微信-->你要加的群-->群(右上角)-->群成员页面-->全部群成员\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"},{\"type\":\"Label\",\"text\":\"要加群成员数（在群成员页面查看）\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"prompt\":\"成员数\",\"text\":\"5\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"验证文本\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"你好啊，交个朋友\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"今天吃的什么\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"猜猜我是谁\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"标签/备注\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"软件添加\",\"prompt\":\"要打的标签，如果不用请填写n\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"是否禁止对方看你的朋友圈\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"RadioGroup\",\"list\":\"是,否\",\"select\":\"1\"}]}"
+	local ret,num,txt1,txt2,txt3,label,look=showUI(ui)
+	--Common.sleepR(2000)
 
 	if ret==1 then
-		Auto.AddByGroup.config.num=num
+		Common.sleepR(1000)
+		Common.slideUp(Auto.AddByGroup.config.searchBarH)
+		Common.sleepR(1000)
 		Auto.AddByGroup.config.say={txt1,txt2,txt3}
+		Auto.AddByGroup.config.look=look+0
+		Auto.AddByGroup.config.label=label	
+		Auto.AddByGroup.config.num=num
 		for i=1,Auto.AddByGroup.config.num do
 			Auto.AddByGroup.add(i)
 		end
@@ -3079,7 +3105,7 @@ Auto.recovery=function()
 end
 ---使用说明
 Auto.intro=function()
-	local ui="{\"style\":\"default\",\"views\":[{\"type\":\"Label\",\"text\":\"使用说明\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"1.本脚本运行在触动精灵程序中，触动精灵主目录为 文件系统（越狱）/User/Media/TouchSprite/\\n 2.如果手机是6/6s，请在设置-->显示和亮度-->显示模式,设置为放大，之后再使用\\n 3.确认以上操作无勿，开始使用微信助手，每个功能都会有相应的启动页面提示，按照提示来即可！\\n -安全起见，轮登请不要超过3个号\\n -确保微信6.1以上，ios8以上系统\\n  -若运行时出现错误和点击位置不正确，停止脚步并重新启动相应功能即可\\n\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"}]}"
+	local ui="{\"style\":\"default\",\"views\":[{\"type\":\"Label\",\"text\":\"使用说明\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"1.本脚本运行在触动精灵程序中，触动精灵主目录为 文件系统（越狱）/User/Media/TouchSprite/\\n 2.如果手机是6/6s，请在设置-->显示和亮度-->显示模式,设置为放大，再重新打开触动精灵，之后再使用\\n 3.确认以上操作无勿，开始使用微信助手，每个功能都会有相应的启动页面提示，按照提示来即可！\\n  -安全起见，轮登请不要超过3个号\\n -确保微信为最新版，ios8以上系统\\n  -若运行时出现错误和点击位置不正确，停止脚步并重新启动相应功能即可\\n\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"}]}"
 local ret=showUI(ui)
 end
 ---加密解密
@@ -3196,7 +3222,7 @@ Auto.check=function()
 --					Common.sleepR(2000)
 --					dialog("分辨率设置成功，可以开始使用", 2)  
 --					dialog("请按音量减重新启动软件，开始使用", 2)   
-                      dialog("请在设置-->显示与亮度-->显示模式，设置为放大后再使用,如果设置完成后仍然有此提示，请稍等几十秒，再使用即可", 0)  
+                      dialog("请在设置-->显示与亮度-->显示模式，设置为放大后再重新打开触动精灵,使用即可", 0)  
 					--lua_restart() 
 				else
 					dialog("请将系统升级到ios8以上，触动精灵版本2.2.1以上", 4)
