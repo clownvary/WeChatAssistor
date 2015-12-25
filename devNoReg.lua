@@ -359,9 +359,6 @@ Auto.AddBySearch.startAdd=function()
 
 --		end
 
-
-
-
 --	end		
 end
 Auto.AddBySearch.start=function()
@@ -370,7 +367,7 @@ Auto.AddBySearch.start=function()
 	Auto.AddBySearch.config.say={}
 	Auto.AddBySearch.config.g_s_time=1000 --一般操作延迟时间
 	Auto.AddBySearch.config.num=3--要添加的手机号码次数
-	local ui="{\"style\":\"default\",\"config\":\"save_002.dat\",\"views\":[{\"type\":\"Label\",\"text\":\"通过搜索添加好友\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"注意：启动界面：微信-->微信，在文件系统（越狱）/User/Media/TouchSprite/res/下新建sjh.txt文件，并在文件中写入你要搜的手机号、qq号、或微信号一行一个\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"},{\"type\":\"Label\",\"text\":\"搜索次数\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"prompt\":\"搜索次数\",\"text\":\"5\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"打招呼文本\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"你好啊，交个朋友\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"今天吃的什么\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"猜猜我是谁\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"}]}"
+	local ui=""
 	local ret,num,txt1,txt2,txt3=showUI(ui)
 	if ret==1 then
 		Auto.AddBySearch.config.say={txt1,txt2,txt3}

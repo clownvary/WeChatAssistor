@@ -1327,7 +1327,7 @@ Auto.SentByContact.sent=function(i)
 		Common.click(541,1081)--点击发送
 		Common.sleepR(Auto.SentByContact.config.g_s_time)	--延迟要长，出错率较高	
 		Common.click(48,84)
-		Common.sleepR(700)	 
+		Common.sleepR(900)
 		Common.click(236,1080)
 		Common.sleepR(Auto.SentByContact.config.g_s_time)
 	end	
@@ -2726,7 +2726,7 @@ Auto.ZombieCheckDel.sent=function(i)
 		if b_x==-1 and b_y==-1 then
 			Common.click(48,84)
 			Common.sleepR(800)
-				Common.clickS(588,89)--点击更多
+			Common.clickS(588,89)--点击更多
 			Common.sleepR(800)
 			local x1,y1 = findColorInRegionFuzzy( 0xec5050, 90,3, 508, 610, 1116)--找删除按钮
 			Common.click(x1+100,y1+10)--点击删除
@@ -2758,7 +2758,7 @@ return isDel
 end
 Auto.ZombieCheckDel.start=function()
 	Auto.ZombieCheckDel.config.page_h=535
-	Auto.ZombieCheckDel.config.row_h=Auto.ZombieCheckDel.config.page_h/5
+	Auto.ZombieCheckDel.config.row_h=Auto.ZombieCheckDel.config.page_h/6
 	Auto.ZombieCheckDel.config.g_s_time=1000 --一般操作延迟时间
 	Auto.ZombieCheckDel.config.num=3--添加人数
 
