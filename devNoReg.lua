@@ -272,20 +272,35 @@ end
 Auto.AddBySearch.addToContact=function(x,y)
 	Common.click(x+100,y+15)--点击添加到通讯录
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)	
-	Common.click(581,251)--点击清除文本信息
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)		
-	inputText(Auto.AddBySearch.config.say[math.random(1,3)])
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)	
-	Common.click(586,81)--点击发送
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)	--延迟要长，出错率较高
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)		
-	Common.click(94,84)	
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)		
-	Common.click(587,83)--点击取消1	
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)	
-	Common.click(48,80)--点击取消2，返回初页	
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)				
+	local m,n= findMultiColorInRegionFuzzy( 0xffffff, "-1|1|0x53d352,7|-4|0xb9edb8,34|-6|0xf5fcf5", 90, 4,307,640,1070)--找‘去打个招呼’
+	if m~=-1 and n~=-1 then --没有验证
+		toast(m..":"..n)
+		Common.click(48,80)--点击取消2，返回初页	
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+		Common.click(587,83)--点击取消1	
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+		Common.click(48,80)--点击取消2，返回初页
+
+	else
+		toast("有验证")
+		Common.click(581,251)--点击清除文本信息
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+		inputText(Auto.AddBySearch.config.say[math.random(1,3)])
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)	
+		Common.click(586,81)--点击发送
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)	--延迟要长，出错率较高
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+		Common.click(94,84)	
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+		Common.click(587,83)--点击取消1	
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)	
+		Common.click(48,80)--点击取消2，返回初页	
+		Common.sleepR(Auto.AddBySearch.config.g_s_time)	
+
+	end
+
+
 end
 Auto.AddBySearch.readFile=function(file)
 	assert(file,"file open failed")
@@ -332,34 +347,34 @@ Auto.AddBySearch.startAdd=function()
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)
 	Common.click(341,1088)
 	Common.sleepR(Auto.AddBySearch.config.g_s_time)
-	Common.click(603,980)
-	Common.sleepR(Auto.AddBySearch.config.g_s_time)	 
+	--Common.click(603,980)
+	--Common.sleepR(Auto.AddBySearch.config.g_s_time)	 
 	Common.click(541,1081)--点击搜索
 	Common.sleepR(2000) --搜索延迟要长
 	--开始找结果
-	x, y =findMultiColorInRegionFuzzy(0x06bf04,"-198|-9|0xfafefa,-12|-15|0xffffff,-107|11|0xffffff",90,4,307,640,1070)
+	local x, y =findMultiColorInRegionFuzzy( 0xfefffe, "-3|1|0x06bf04,8|3|0xbbedba,8|8|0xecfaec", 90, 4,307,640,1070)--找“添加到通讯录”
 
 
---	if x ~= -1 and y ~= -1 then    
+	if x ~= -1 and y ~= -1 then    
 --		Common.click(x+15,y+15)
 --		Common.sleepR(2000)	 		
---		Auto.AddBySearch.addToContact(x,y)
---	else 
---		local c_x,c_y=findColorInRegionFuzzy(0x06BF04,100, 4, 307, 640, 1070)	--是否是发消息按钮（已添加好友）
---		if c_x ~= -1 and c_y ~= -1 then  
---			Common.click(48,80)--点击取消2，返回初页	
---			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
---			Common.click(587,83)--点击取消1	
---			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
---			Common.click(48,80)--点击取消2，返回初页	
---		else
---			Common.click(587,83)--点击取消1	
---			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
---			Common.click(48,80)--点击取消2，返回初页		
+		Auto.AddBySearch.addToContact(x,y)
+	else 
+		local c_x,c_y=findColorInRegionFuzzy(0x06BF04,100, 4, 307, 640, 1070)	--是否是发消息按钮（已添加好友）
+		if c_x ~= -1 and c_y ~= -1 then  
+			Common.click(48,80)--点击取消2，返回初页	
+			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+			Common.click(587,83)--点击取消1	
+			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+			Common.click(48,80)--点击取消2，返回初页	
+		else
+			Common.click(587,83)--点击取消1	
+			Common.sleepR(Auto.AddBySearch.config.g_s_time)		
+			Common.click(48,80)--点击取消2，返回初页		
 
---		end
+		end
 
---	end		
+	end		
 end
 Auto.AddBySearch.start=function()
 
@@ -367,7 +382,7 @@ Auto.AddBySearch.start=function()
 	Auto.AddBySearch.config.say={}
 	Auto.AddBySearch.config.g_s_time=1000 --一般操作延迟时间
 	Auto.AddBySearch.config.num=3--要添加的手机号码次数
-	local ui=""
+	local ui="{\"style\":\"default\",\"config\":\"save_002.dat\",\"views\":[{\"type\":\"Label\",\"text\":\"通过搜索添加好友\",\"size\":24,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"注意：启动界面：微信-->微信，在文件系统（越狱）/User/Media/TouchSprite/res/下新建sjh.txt文件\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"},{\"type\":\"Label\",\"text\":\"并在文件中写入你要搜的手机号、qq号、或微信号一行一个\",\"size\":15,\"align\":\"left\",\"color\":\"255,0,0\"},{\"type\":\"Label\",\"text\":\"搜索次数\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"prompt\":\"搜索次数\",\"text\":\"5\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Label\",\"text\":\"打招呼文本\",\"size\":15,\"align\":\"center\",\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"你好啊，交个朋友\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"今天吃的什么\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"},{\"type\":\"Edit\",\"text\":\"猜猜我是谁\",\"align\":\"left\",\"size\":15,\"color\":\"0,123,223\"}]}"
 	local ret,num,txt1,txt2,txt3=showUI(ui)
 	if ret==1 then
 		Auto.AddBySearch.config.say={txt1,txt2,txt3}
@@ -891,9 +906,9 @@ end
 Auto.AddByGroup.add=function(i)
 	local r
 	if (i%7==0) then
-	r=0
-     else
-	r=(i%7)-1
+		r=0
+	else
+		r=(i%7)-1
 	end
 	---翻页后重新计算r
 	Common.clickS(92,185+(r*Auto.AddByGroup.config.row_h))
@@ -902,9 +917,9 @@ Auto.AddByGroup.add=function(i)
 
 	local x, y=findMultiColorInRegionFuzzy(0x06bf04,"-198|-9|0xfafefa,-12|-15|0xffffff,-107|11|0xffffff",100,4,307,640,1070)
 	if x ~= -1 and y ~= -1 then    
-		
+
 		if Auto.AddByGroup.config.label~='n' and Auto.AddByGroup.config.label~=''  then
-	
+
 			----打标签开始
 			Common.clickS(207,418)---点击标签
 			Common.sleepR(1000)
@@ -949,7 +964,7 @@ Auto.AddByGroup.add=function(i)
 		Common.click(48,80)--点击取消2，返回初页		
 		Common.sleepR(Auto.AddByGroup.config.g_s_time)
 	end	
-	
+
 	if(i%7==0) then
 		Common.slideUp(Auto.AddByGroup.config.page_h)
 		Common.sleepR(Auto.AddByGroup.config.g_s_time)	
